@@ -50,6 +50,7 @@ p {
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
     text-transform: uppercase;
     letter-spacing: 1px;
+    margin: 0.5rem;
 }
 
 #ConnectButton:hover {
@@ -60,6 +61,32 @@ p {
 #ConnectButton:active {
     transform: translateY(0);
     box-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
+}
+
+#ExecuteButton {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(17, 153, 142, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0.5rem;
+}
+
+#ExecuteButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(17, 153, 142, 0.6);
+}
+
+#ExecuteButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(17, 153, 142, 0.4);
 }
 
 .footer {
