@@ -1,6 +1,8 @@
 import { createWalletClient, custom } from "https:/esm.sh/viem"
 
-const connectButton = document.getElementById('ConnectButton')
+const connectButton = document.getElementById('connectButton')
+const sendButton = document.getElementById('sendButton')
+const ethAmountInput = document.getElementById('ethAmount')
 
 let walletClient 
 
@@ -29,3 +31,16 @@ async function Connect() {
 }
 
 connectButton.onclick = Connect
+
+// Enable/disable send button based on input value
+function updateSendButtonState() {
+    const hasValue = ethAmountInput.value.trim() !== '' && parseFloat(ethAmountInput.value) > 0
+    sendButton.disabled = !hasValue
+}
+
+// Initial state: button disabled
+sendButton.disabled = true
+
+// Listen for input changes
+ethAmountInput.addEventListener('input', updateSendButtonState)
+ethAmountInput.addEventListener('change', updateSendButtonState)

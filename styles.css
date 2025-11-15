@@ -60,6 +60,16 @@ button:active {
     transform: translateY(0);
 }
 
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+button:disabled:hover {
+    transform: none !important;
+}
+
 /* Specific button color schemes */
 #connectButton {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -107,7 +117,7 @@ label {
     font-weight: 600;
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
-    text-align: left;
+    text-align: center;
 }
 
 input {
