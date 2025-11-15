@@ -1,5 +1,5 @@
 import { createWalletClient, custom, createPublicClient, parseEther, defineChain } from "https:/esm.sh/viem"
-import { contractAddress, abi } from "./constants-js.js"
+import { contractAddress, abi } from "./constants.js"
 
 // Elements
 const connectButton = document.getElementById('connectButton')

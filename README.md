@@ -32,8 +32,14 @@ A simple web app for connecting to MetaMask, checking your balance, and buying c
 
 ```
 web3-course/
-├── index.html      # Main HTML file
-├── index-js.js     # Wallet connection and transaction logic
-├── styles.css      # Styling
-└── README.md       # Documentation
+├── src/
+│   ├── js/
+│   │   ├── index.js        # Main JavaScript logic
+│   │   └── constants.js    # Contract address and ABI
+│   └── css/
+│       └── styles.css      # Styling
+├── contracts/
+│   └── fundeme-anvil.json  # Contract deployment data
+├── index.html              # Main HTML file
+└── README.md               # Documentation
 ```
