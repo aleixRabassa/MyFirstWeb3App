@@ -1,10 +1,11 @@
-import { createWalletClient, custom, createPublicClient, parseEther, defineChain } from "https:/esm.sh/viem"
+import { createWalletClient, custom, createPublicClient, parseEther, defineChain, formatEther } from "https:/esm.sh/viem"
 import { contractAddress, abi } from "./constants.js"
 
 // Elements
 const connectButton = document.getElementById('connectButton')
 const fundButton = document.getElementById('fundButton')
 const ethAmountInput = document.getElementById('ethAmount')
+const balanceButton = document.getElementById('balanceButton')
 
 // Globals
 let walletClient
@@ -27,10 +28,14 @@ async function connect() {
         await walletClient.requestAddresses()
 
         // Update button text to indicate successful connection
-        connectButton.innerText = 'Connected'
+        connectButton.innerText = 'Disconnect'
+
+        fundButton.disabled = false
     } else {
         // If MetaMask is not installed, update button text to prompt installation
         connectButton.innerText = 'Please install MetaMask'
+
+        fundButton.disabled = true
     }
 }
 
@@ -60,17 +65,21 @@ async function fund() {
         });
 
         // Simulate the contract call before executing to check for errors
-        await publicClient.simulateContract({
+        const { request } = await publicClient.simulateContract({
             address: contractAddress,           // Smart contract address
             abi: abi,                           // Contract ABI (interface)
             functionName: 'fund',               // Function to call on the contract
-            account: connectedAccount,        // User's wallet address
+            account: connectedAccount,          // User's wallet address
             chain: currentChain,                // Network chain configuration
             value: parseEther(ethAmount)        // Convert ETH amount to wei
         })
 
+        const hash = await walletClient.writeContract(request)
+
+        console.log(hash)
+
         // Update button text to indicate successful connection
-        connectButton.innerText = 'Connected'
+        connectButton.innerText = 'Disconnect'
     } else {
         // If MetaMask is not installed, update button text to prompt installation
         connectButton.innerText = 'Please install MetaMask'
@@ -113,8 +122,23 @@ async function getCurrentChain(client) {
     return currentChain
 }
 
+async function getBalance() {
+    if (isMetaMaskInstalled) {
+        publicClient = createPublicClient({
+            transport: custom(window.ethereum)
+        });
+
+        const balance = await publicClient.getBalance({
+            address: contractAddress
+        })
+
+        console.log(formatEther(balance))
+    }
+}
+
 connectButton.onclick = connect
 fundButton.onclick = fund
+balanceButton.onclick = getBalance
 
 // Initial state: button disabled
 fundButton.disabled = true
