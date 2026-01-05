@@ -44,7 +44,7 @@ async function connect(): Promise<void> {
 }
 
 /**
- * Fund function - Sends ETH transaction to buy coffee
+ * Fund function - Sends ETH transaction
  * Connects to wallet if not already connected, retrieves user's address,
  * creates a public client for blockchain interaction, and initiates the ETH transfer
  */

@@ -1,4 +1,4 @@
-# Web3 Coffee Shop
+# My First Web3 App
 
 A decentralized web app for connecting to MetaMask, managing smart contract interactions, and handling ETH transactions using Viem.
 
@@ -6,17 +6,18 @@ A decentralized web app for connecting to MetaMask, managing smart contract inte
 
 - **Wallet Connection**: Connect to MetaMask wallet seamlessly
 - **Balance Checking**: View contract ETH balance in real-time
-- **Fund Contract**: Send ETH transactions to fund the contract (buy coffee)
-- **Withdraw Funds**: Call the withdraw function on the smart contract
+- **Fund Contract**: Send ETH transactions to fund the contract
+- **Withdraw Funds**: Withdraw all funds from the smart contract
 - **Input Validation**: Smart button states with real-time validation
 - **TypeScript Support**: Full TypeScript implementation with type safety
 - **Modern UI**: Responsive design with gradient styling
 
 ## Technologies
 
-- HTML5, CSS3, JavaScript (ES6+)
+- HTML5, CSS3
 - TypeScript
-- Viem v2.43+ (Ethereum library via CDN)
+- Viem v2.43+ (Ethereum library)
+- Vite (Development server & build tool)
 - MetaMask
 - pnpm (Package manager)
 
@@ -34,42 +35,37 @@ A decentralized web app for connecting to MetaMask, managing smart contract inte
 pnpm install
 ```
 
-2. Compile TypeScript (if using TypeScript version):
+2. Start the development server:
 ```bash
-pnpm tsc
+pnpm dev
 ```
 
-3. Open `index.html` in your browser
+3. Open your browser to `http://localhost:5173`
 
 ## Usage
 
-1. Open `index.html` in your browser
-2. Click "Connect Wallet" to connect MetaMask
-3. Click "Get balance" to view the contract balance
-4. Enter an ETH amount and click "Buy coffee" to fund the contract
-5. Click "Withdraw" to withdraw funds from the contract (owner only)
+1. Start the dev server with `pnpm dev`
+2. Open your browser to `http://localhost:5173`
+3. Click "Connect Wallet" to connect MetaMask
+4. Click "Get balance" to view the contract balance
+5. Enter an ETH amount and click "Fund" to send ETH to the contract
+6. Click "Withdraw all" to withdraw funds from the contract (owner only)
 
 ## Project Structure
 
 ```
 web3-course/
 ├── src/
-│   ├── js/
-│   │   ├── index.js        # Main JavaScript logic
-│   │   └── constants.js    # Contract address and ABI
 │   ├── ts/
-│   │   ├── index.ts        # TypeScript implementation
-│   │   ├── index.js        # Compiled TypeScript output
-│   │   ├── constants.ts    # TypeScript constants
-│   │   ├── constants.js    # Compiled constants
-│   │   └── global.d.ts     # Global type declarations
+│   │   ├── index.ts        # Main TypeScript application logic
+│   │   └── constants.ts    # Contract address and ABI
 │   └── css/
-│       └── styles.css      # Styling with gradient buttons
+│       └── styles.css      # Styling with gradient design
 ├── contracts/
 │   └── fundme-anvil.json   # Contract deployment data
 ├── index.html              # Main HTML file
 ├── tsconfig.json           # TypeScript configuration
-├── package.json            # Project dependencies
+├── package.json            # Project dependencies and scripts
 ├── .gitignore              # Git ignore rules
 └── README.md               # Documentation
 ```
@@ -81,9 +77,10 @@ web3-course/
 
 ## Development
 
-The project supports both JavaScript and TypeScript implementations:
+The project uses Vite for fast development and hot module replacement:
 
-- **JavaScript**: Use `src/js/index.js` (works directly in browser)
-- **TypeScript**: Edit `src/ts/index.ts` and compile with `pnpm tsc`
+- **Dev Server**: Run `pnpm dev` to start the Vite development server
+- **TypeScript**: Vite handles TypeScript compilation automatically
+- **Hot Reload**: Changes are reflected instantly in the browser
 
-TypeScript configuration uses ES2020 modules for browser compatibility.
+Vite configuration uses native ES modules for optimal performance.
